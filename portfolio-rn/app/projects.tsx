@@ -2,10 +2,6 @@ import { ScrollView, StyleSheet } from "react-native";
 import ProjectCard from "../components/ProjectCard";
 import colors from "../constants/colors";
 
-export const options = {
-  title: "Projects",
-};
-
 export default function Projects() {
   const projects = [
     {

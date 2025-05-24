@@ -5,10 +5,6 @@ import IceBreakerCard from "../components/IceBreakerCard";
 import colors from "../constants/colors";
 import { FontAwesome } from "@expo/vector-icons";
 
-export const options = {
-  title: "Home",
-};
-
 export default function Home() {
   const profile = {
     picture: require("../assets/foto-perfil.jpeg"),

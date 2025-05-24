@@ -61,7 +61,7 @@ export default function DrawerLayout() {
         name="game"
         options={{
           drawerLabel: "Game",
-          title: "Game",
+          title: "Bulls and Cows",
           drawerIcon: GameIcon,
         }}
       />

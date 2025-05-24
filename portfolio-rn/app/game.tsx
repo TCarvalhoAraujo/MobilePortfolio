@@ -1,17 +1,7 @@
 import { useState } from "react";
-import {
-    View,
-    Text,
-    TextInput,
-    Button,
-    FlatList,
-    StyleSheet,
-    Alert,
-} from "react-native";
-
-export const options = {
-    title: "Game - Bulls and Cows",
-};
+import { View, Text, TextInput, Pressable, FlatList, StyleSheet, Alert } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import colors from "../constants/colors";
 
 function generateSecret(): string {
     const digits: number[] = [];
@@ -21,7 +11,6 @@ function generateSecret(): string {
     }
     return digits.join("");
 }
-
 
 function evaluateGuess(secret: string, guess: string): string {
     let bulls = 0;
@@ -33,6 +22,17 @@ function evaluateGuess(secret: string, guess: string): string {
     }
 
     return `${bulls} Bulls ●, ${cows} Cows ○`;
+}
+
+function showGameRules() {
+    Alert.alert(
+        "Game Rules",
+        "🎯 Guess the 4-digit secret code.\n\n" +
+        "• Digits must be unique (no repeats).\n" +
+        "• Bulls (●): correct digit, correct position.\n" +
+        "• Cows (○): correct digit, wrong position.\n" +
+        "Keep guessing until you crack the code!"
+    );
 }
 
 export default function Game() {
@@ -60,19 +60,26 @@ export default function Game() {
         Alert.alert("You gave up!", `The secret was: ${secret}`, [
             {
                 text: "Play Again",
-                onPress: () => {
-                    setSecret(generateSecret());
-                    setGuess("");
-                    setHistory([]);
-                },
+                onPress: resetGame,
             },
         ]);
     }
 
+    function resetGame() {
+        setSecret(generateSecret());
+        setGuess("");
+        setHistory([]);
+    }
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Try to guess the 4-digit code</Text>
+
+            <View style={styles.header}>
+                <Text style={styles.title}>Guess the 4-digit code!</Text>
+                <Pressable onPress={showGameRules} style={styles.infoButton}>
+                    <FontAwesome name="info-circle" size={24} color={colors.darkGreen} />
+                </Pressable>
+            </View>
 
             <TextInput
                 value={guess}
@@ -83,11 +90,27 @@ export default function Game() {
                 style={styles.input}
             />
 
-            <Button title="Submit Guess" onPress={handleGuess} />
+            <View style={styles.buttonGrid}>
+                <View style={styles.buttonRow}>
+                    <Pressable style={[styles.gridButton, styles.buttonNeutral]} onPress={() => Alert.alert("Secret", secret)}>
+                        <Text style={styles.buttonText}>Reveal Secret</Text>
+                    </Pressable>
 
-            <Button title="Reveal Secret" onPress={() => Alert.alert("Secret", secret)} color="#888" />
+                    <Pressable style={styles.gridButton} onPress={handleGuess}>
+                        <Text style={styles.buttonText}>Submit Guess</Text>
+                    </Pressable>
+                </View>
 
-            <Button title="Give Up" onPress={handleGiveUp} color="#d32f2f" />
+                <View style={styles.buttonRow}>
+                    <Pressable style={[styles.gridButton, styles.buttonDanger]} onPress={handleGiveUp}>
+                        <Text style={styles.buttonText}>Give Up</Text>
+                    </Pressable>
+
+                    <Pressable style={styles.gridButton} onPress={resetGame}>
+                        <Text style={styles.buttonText}>Play Again</Text>
+                    </Pressable>
+                </View>
+            </View>
 
             <FlatList
                 data={history}
@@ -102,21 +125,70 @@ export default function Game() {
 const styles = StyleSheet.create({
     container: {
         padding: 20,
-        flex: 1,
+        flexGrow: 1,
+        backgroundColor: colors.background,
     },
-    title: {
-        fontSize: 18,
+    header: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
         marginBottom: 10,
+        position: "relative",
+    },
+    infoButton: {
+        position: "absolute",
+        right: 10,
+        top: 0,
+    },
+
+    title: {
+        color: colors.darkGreen,
+        fontSize: 22,
+        marginBottom: 12,
+        fontWeight: "bold",
+        textAlign: "center",
     },
     input: {
-        borderWidth: 1,
-        padding: 10,
+        borderWidth: 2,
+        borderColor: colors.darkGreen,
+        backgroundColor: colors.cardBackground,
+        padding: 12,
         fontSize: 18,
-        marginBottom: 10,
+        marginBottom: 15,
         borderRadius: 8,
+        color: colors.text,
+    },
+    buttonGrid: {
+        marginTop: 15,
+    },
+    buttonRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: 10,
+    },
+    gridButton: {
+        flex: 1,
+        backgroundColor: colors.primary,
+        paddingVertical: 12,
+        marginHorizontal: 5,
+        borderRadius: 8,
+        alignItems: "center",
+    },
+    buttonText: {
+        color: colors.white,
+        fontSize: 14,
+        fontWeight: "bold",
+        textAlign: "center",
+    },
+    buttonDanger: {
+        backgroundColor: colors.red,
+    },
+    buttonNeutral: {
+        backgroundColor: colors.grey,
     },
     item: {
         fontSize: 16,
         paddingVertical: 4,
+        color: colors.text,
     },
 });

@@ -2,10 +2,6 @@ import { ScrollView, StyleSheet } from "react-native";
 import ExperienceCard from "../components/ExperienceCard";
 import colors from "../constants/colors";
 
-export const options = {
-  title: "Professional Experience",
-};
-
 export default function ProfessionalExperience() {
   const experiences = [
     {
