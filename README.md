@@ -18,3 +18,20 @@ This app showcases my academic background, professional experiences, technical p
 
 ## 📷 Screenshots
 
+### 🏠 Home
+![Home Screenshot](assets/home.png)
+
+### ℹ️ About
+![About Screenshot](assets/about.png)
+
+### 🎓 Academic Experience
+![Academic Screenshot](assets/academic-experience.png)
+
+### 💼 Professional Experience
+![Professional Screenshot](assets/professional-experience.png)
+
+### 💻 Projects
+![Projects Screenshot](assets/projects.png)
+
+### 🎮 Game
+![Game Screenshot](assets/game.png)
