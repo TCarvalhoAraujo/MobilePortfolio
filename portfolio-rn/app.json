@@ -5,6 +5,20 @@
       "expo-router"
     ],
     "name": "MobilePortfolio",
-    "slug": "mobile-portfolio"
+    "slug": "mobile-portfolio",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4fce7817-ece1-4038-89b8-af65198f0d00"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/4fce7817-ece1-4038-89b8-af65198f0d00"
+    },
+    "android": {},
+    "ios": {}
   }
 }
