@@ -19,19 +19,19 @@ This app showcases my academic background, professional experiences, technical p
 ## 📷 Screenshots
 
 ### 🏠 Home
-![Home Screenshot](assets/home.png)
+![Home Screenshot](/assets/home.jpg)
 
 ### ℹ️ About
-![About Screenshot](assets/about.png)
+![About Screenshot](assets/about.jpg)
 
 ### 🎓 Academic Experience
-![Academic Screenshot](assets/academic-experience.png)
+![Academic Screenshot](assets/academic-experience.jpg)
 
 ### 💼 Professional Experience
-![Professional Screenshot](assets/professional-experience.png)
+![Professional Screenshot](assets/professional-experience.jpg)
 
 ### 💻 Projects
-![Projects Screenshot](assets/projects.png)
+![Projects Screenshot](assets/projects.jpg)
 
 ### 🎮 Game
-![Game Screenshot](assets/game.png)
+![Game Screenshot](assets/game.jpg)
