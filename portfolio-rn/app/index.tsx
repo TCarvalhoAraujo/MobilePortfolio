@@ -7,7 +7,6 @@ import { FontAwesome } from "@expo/vector-icons";
 
 export const options = {
   title: "Home",
-  headerShown: false,
 };
 
 export default function Home() {
